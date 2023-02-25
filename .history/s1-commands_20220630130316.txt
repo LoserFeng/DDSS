@@ -1,0 +1,36 @@
+table_set_default t_tunnel_fwd _drop
+table_set_default t_tunnel_ingress _drop
+table_set_default server_lpm drop
+table_add t_tunnel_fwd my_tunnel_egress 1 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 2 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd set_out_port 3 => 3
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.9.1/32 => 7
+table_add t_tunnel_fwd set_out_port 7 => 4
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.11/32 => 8
+table_add t_tunnel_fwd my_tunnel_egress 8 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.12/32 => 9
+table_add t_tunnel_fwd my_tunnel_egress 9 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.21/32 => 10
+table_add t_tunnel_fwd set_out_port 10 => 3
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.22/32 => 11
+table_add t_tunnel_fwd set_out_port 11 => 3
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.41/32 => 12
+table_add t_tunnel_fwd set_out_port 12 => 5
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.42/32 => 13
+table_add t_tunnel_fwd set_out_port 13 => 4
+table_add t_tunnel_fwd my_tunnel_egress 15 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 16 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 22 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 23 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 29 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 30 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 36 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 37 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 43 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 44 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 50 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 51 => 2 00:00:0a:00:01:0c
+table_add t_tunnel_fwd my_tunnel_egress 57 => 1 00:00:0a:00:01:0b
+table_add t_tunnel_fwd my_tunnel_egress 58 => 2 00:00:0a:00:01:0c
+table_add getInfo getMac => 00:00:0a:00:00:01
+table_add syn_counters syn_defence_action 1 => 

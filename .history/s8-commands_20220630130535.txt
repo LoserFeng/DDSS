@@ -1,0 +1,22 @@
+table_set_default t_tunnel_fwd _drop
+table_set_default t_tunnel_ingress _drop
+table_set_default server_lpm drop
+table_add t_tunnel_fwd set_out_port 21 => 2
+table_add t_tunnel_fwd set_out_port 49 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.9.1/32 => 56
+table_add t_tunnel_fwd set_out_port 56 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.11/32 => 57
+table_add t_tunnel_fwd set_out_port 57 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.12/32 => 58
+table_add t_tunnel_fwd set_out_port 58 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.21/32 => 59
+table_add t_tunnel_fwd set_out_port 59 => 4
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.22/32 => 60
+table_add t_tunnel_fwd set_out_port 60 => 4
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.41/32 => 61
+table_add t_tunnel_fwd set_out_port 61 => 1
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.42/32 => 62
+table_add t_tunnel_fwd set_out_port 62 => 1
+
+table_add getInfo getMac => 00:00:0a:00:00:08
+table_add syn_counters syn_defence_action 1 => 

@@ -1,0 +1,24 @@
+def query_by_id(user_id):
+    print('123')
+
+def query_by_name(user_name):
+    print('234')
+
+def main():
+    while True:
+        option = input('请输入选项前面的数字：1. 根据 id 查询；2.根据用户名查询>')
+        if option == '1':
+            user_id = input('请输入用户 id>')
+            query_by_id(user_id)
+        elif option == '2':
+            user_name = input('请输入用户名>')
+            query_by_name(user_name)
+        elif option == 'exit':
+            print('退出！')
+            break
+        else:
+            print('输入无效，请重新输入')
+
+
+if __name__ == '__main__':
+    main()

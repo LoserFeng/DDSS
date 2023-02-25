@@ -1,0 +1,46 @@
+
+import pyshark
+import collections
+import matplotlib.pyplot as plt
+import numpy as np
+ 
+cap1 = pyshark.FileCapture('pcap/s0-eth5_in.pcap', only_summaries=True)
+cap2 = pyshark.FileCapture('pcap/s1-eth1_in.pcap', only_summaries=True)
+cap3 = pyshark.FileCapture('pcap/s1-eth2_in.pcap', only_summaries=True)
+cap4 = pyshark.FileCapture('pcap/s2-eth2_in.pcap', only_summaries=True)
+
+cap5 = pyshark.FileCapture('pcap/s4-eth5_in.pcap', only_summaries=True)
+cap6 = pyshark.FileCapture('pcap/s4-eth4_in.pcap', only_summaries=True)
+cap7 = pyshark.FileCapture('pcap/s3-eth4_in.pcap', only_summaries=True)
+cap8 = pyshark.FileCapture('pcap/s3-eth5_in.pcap', only_summaries=True)
+
+#cap = pyshark.FileCapture('pcap/s2-eth3_in.pcap', only_summaries=True)
+
+
+protocolList = []
+ipsrcList=[]
+ipdstList=[]
+
+
+for packet in cap:    
+    line = str(packet)
+    formattedLine = line.split(" ")
+    ipsrcList.append(formattedLine[2])
+    ipdstList.append(formattedLine[3])
+    protocolList.append(formattedLine[4])
+
+
+
+counter = collections.Counter(protocolList)
+ 
+plt.style.use('ggplot')
+
+
+
+y_pos = np.arange(len(list(counter.keys())))
+plt.bar(y_pos, list(counter.values()), align='center', alpha=0.5, color=['b', 'g', 'r', 'c', 'm'])   
+plt.xticks(y_pos, list(counter.keys()))
+
+plt.ylabel("Frequency")
+plt.xlabel("Protocol Name")
+plt.savefig("result.png")

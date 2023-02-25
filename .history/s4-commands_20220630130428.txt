@@ -1,0 +1,38 @@
+table_set_default t_tunnel_fwd _drop
+table_set_default t_tunnel_ingress _drop
+table_set_default server_lpm drop
+table_add t_tunnel_fwd my_tunnel_egress 5 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 6 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 12 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 13 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 19 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 20 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 26 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 27 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.9.1/32 => 28
+table_add t_tunnel_fwd set_out_port 28 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.11/32 => 29
+table_add t_tunnel_fwd set_out_port 29 => 1
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.1.12/32 => 30
+table_add t_tunnel_fwd set_out_port 30 => 2
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.21/32 => 31
+table_add t_tunnel_fwd set_out_port 31 => 1
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.2.22/32 => 32
+table_add t_tunnel_fwd set_out_port 32 => 1
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.41/32 => 33
+table_add t_tunnel_fwd my_tunnel_egress 33 => 4 00:00:0a:00:04:29
+table_add t_tunnel_ingress my_tunnel_ingress 10.0.4.42/32 => 34
+table_add t_tunnel_fwd my_tunnel_egress 34 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd set_out_port 38 => 1
+table_add t_tunnel_fwd set_out_port 39 => 1
+table_add t_tunnel_fwd my_tunnel_egress 40 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 41 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 47 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 48 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 54 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 55 => 5 00:00:0a:00:04:2a
+table_add t_tunnel_fwd my_tunnel_egress 61 => 4 00:00:0a:00:04:29
+table_add t_tunnel_fwd my_tunnel_egress 62 => 5 00:00:0a:00:04:2a
+
+table_add getInfo getMac => 00:00:0a:00:00:04
+table_add syn_counters syn_defence_action 1 => 

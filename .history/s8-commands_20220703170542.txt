@@ -1,0 +1,9 @@
+table_set_default t_tunnel_fwd _drop
+table_set_default t_tunnel_ingress _drop
+table_set_default server_lpm drop
+
+table_add t_tunnel_fwd set_out_port 27 => 2
+table_add t_tunnel_fwd set_out_port 49 => 4
+
+table_add getInfo getMac => 00:00:0a:00:00:08
+table_add syn_counters syn_defence_action 1 => 
